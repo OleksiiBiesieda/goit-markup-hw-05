@@ -121,6 +121,8 @@ border-bottom: 1px solid #ECECEC;
 }
 
 .contacts-link {
+    display: flex;
+    align-items: center;
     color: var(--primary-text-color);
     font-weight: 500;
         font-size: 14px;
@@ -170,6 +172,10 @@ border-bottom: 1px solid #ECECEC;
 .contacts-icon {
 fill: var(--primary-text-color);
 margin-right: 10px;
+
+transition-property: fill;
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .contacts-link:hover .contacts-icon,
@@ -230,17 +236,32 @@ margin-right: 10px;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
 }
 
 .backdrop.is-hidden {
     opacity: 0;
     pointer-events: none;
 }
+
+.backdrop.is-hidden .modal {
+transform: translate(-50%, -50%) scale(1.1);
+}
+
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
+    transform: translate(-50%, -50%) scale(1);
+
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
     width: 528px;
     height: 581px;
@@ -248,7 +269,7 @@ margin-right: 10px;
     background-color: var(--primary-background-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-
+    z-index: 2;
 }
 
 .hero-modal-close {
@@ -261,16 +282,23 @@ margin-right: 10px;
 
     width: 30px;
     height: 30px;
-    margin-top: 9px;
+    margin-top: 8px;
     margin-right: 8px;
     padding: 0 0;
-    
+
+
     background-color: var(--primary-background-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     cursor: pointer;
-    
-    
+ 
+}
+
+.close-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0;
 }
 
 
@@ -428,6 +456,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 border-radius: 50%;
+fill: #AFB1B8;
 transition-property: background-color, fill;
 transition-duration: 250ms;
 transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -435,18 +464,9 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 .team-soc-link:hover, .team-soc-link:focus {
 background-color: var(--accent-color);
-}
-
-.team-soc-link:hover .team-soc-icon,
-.team-soc-link:focus .team-soc-icon {
 fill: var(--primary-background-color);
-} 
-
-
-
-.team-soc-icon {
-    fill: #AFB1B8;
 }
+
 
 /* Clients */
 
